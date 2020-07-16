@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using BlazorConcepts.Models.ComponentBases;
 using BlazorConcepts.Models.Students.Exceptions;
 using BlazorConcepts.Services;
+using BlazorConcepts.Views.Bases;
 using Microsoft.AspNetCore.Components;
 
 namespace BlazorConcepts.Views.Components
@@ -15,6 +16,7 @@ namespace BlazorConcepts.Views.Components
         public ComponentState State { get; set; }
         public SearchComponentException Exception { get; set; }
         public string StudentName { get; set; }
+        public LabelBase Label { get; set; }
 
         protected override void OnInitialized()
         {

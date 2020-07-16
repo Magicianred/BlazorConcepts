@@ -40,6 +40,7 @@ namespace BlazorConcepts.Tests.Unit
 
             preRenderComponent.Exception.Should().BeNull();
             preRenderComponent.StudentName.Should().BeNull();
+            preRenderComponent.Label.Should().BeNull();
         }
 
         [Fact]
@@ -50,6 +51,7 @@ namespace BlazorConcepts.Tests.Unit
             string randomStudentName = new MnemonicString().GetValue();
             string returnedStudentName = randomStudentName;
             string expectedStudentName = returnedStudentName;
+            string expectedStyles = "font-weight: bold";
 
             this.studentServiceMock.Setup(service =>
                 service.GetStudentName())
@@ -61,6 +63,12 @@ namespace BlazorConcepts.Tests.Unit
             //then
             this.searchComponent.Instance.StudentName.Should()
                 .BeEquivalentTo(expectedStudentName);
+
+            this.searchComponent.Instance.Label.Value.Should()
+                .BeEquivalentTo(expectedStudentName);
+
+            this.searchComponent.Instance.Label.Styles.Should()
+                .BeEquivalentTo(expectedStyles);
 
             this.searchComponent.Instance.State.Should()
                 .BeEquivalentTo(expectedState);
