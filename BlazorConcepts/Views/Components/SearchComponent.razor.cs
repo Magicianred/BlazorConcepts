@@ -1,26 +1,32 @@
 ﻿using System;
 using System.Threading.Tasks;
-using BlazorConcepts.Models.ElementBases;
+using BlazorConcepts.Models.ComponentBases;
+using BlazorConcepts.Models.Students.Exceptions;
+using BlazorConcepts.Services;
 using Microsoft.AspNetCore.Components;
 
 namespace BlazorConcepts.Views.Components
 {
     public partial class SearchComponent : ComponentBase
     {
-        public ElementState State { get; set; }
+        [Inject]
+        public IStudentService StudentService { get; set; }
 
-        protected async override Task OnInitializedAsync()
+        public ComponentState State { get; set; }
+        public SearchComponentException Exception { get; set; }
+        public string StudentName { get; set; }
+
+        protected override void OnInitialized()
         {
             try
             {
-                await Task.Delay(3000);
-                State = ElementState.Content;
-                await Task.Delay(3000);
-                throw new Exception();
+                this.StudentName = this.StudentService.GetStudentName();
+                this.State = ComponentState.Content;
             }
             catch (Exception exception)
             {
-                State = ElementState.Error;
+                this.Exception = new SearchComponentException(exception);
+                this.State = ComponentState.Error;
             }
         }
     }

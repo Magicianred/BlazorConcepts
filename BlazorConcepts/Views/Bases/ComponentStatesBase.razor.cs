@@ -1,12 +1,17 @@
-﻿using BlazorConcepts.Models.ElementBases;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using BlazorConcepts.Models.ComponentBases;
 using Microsoft.AspNetCore.Components;
 
-namespace BlazorConcepts.Views.Base
+namespace BlazorConcepts.Views.Bases
 {
-    public partial class ElementBase : ComponentBase
+    public partial class ComponentStatesBase
     {
+
         [Parameter]
-        public ElementState State { get; set; }
+        public ComponentState State { get; set; }
 
         [Parameter]
         public RenderFragment Loading { get; set; }
@@ -22,8 +27,8 @@ namespace BlazorConcepts.Views.Base
         {
             return this.State switch
             {
-                ElementState.Loading => Loading,
-                ElementState.Content => Content,
+                ComponentState.Loading => Loading,
+                ComponentState.Content => Content,
                 _ => Error
             };
         }

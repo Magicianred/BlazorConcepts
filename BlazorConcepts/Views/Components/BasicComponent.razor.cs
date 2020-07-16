@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BlazorConcepts.Models.ElementBases;
+﻿using BlazorConcepts.Models.ComponentBases;
 using Microsoft.AspNetCore.Components;
 
 namespace BlazorConcepts.Views.Components
@@ -13,7 +9,7 @@ namespace BlazorConcepts.Views.Components
         public RenderFragment ContnetComponent { get; set; }
 
         [Parameter]
-        public ElementState State { get; set; }
+        public ComponentState State { get; set; }
 
         [Parameter]
         public string ErrorMessage { get; set; }
