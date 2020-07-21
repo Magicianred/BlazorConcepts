@@ -43,6 +43,35 @@ namespace BlazorConcepts.Tests.Unit.Components.NameComponents
         {
             // given
             ComponentState expectedState = ComponentState.Content;
+            string expectedButtonText = "Get Student Name";
+
+            // when
+            this.renderedNameComponent = RenderComponent<NameComponent>();
+
+            // then
+            this.renderedNameComponent.Instance.StudentName
+                .Should().BeNull();
+
+            this.renderedNameComponent.Instance.Button
+                .Should().NotBeNull();
+
+            this.renderedNameComponent.Instance.Button.Text
+                .Should().Be(expectedButtonText);
+
+            this.renderedNameComponent.Instance.TextBox.GetValue()
+                .Should().BeNull();
+
+            this.renderedNameComponent.Instance.State
+                .Should().BeEquivalentTo(expectedState);
+
+            this.renderedNameComponent.Instance.Exception
+                .Should().BeNull();
+        }
+
+        [Fact]
+        public void ShouldGetStudentNameWhenButtonIsClickedAndRenderIt()
+        {
+            // given
             string randomStudentName = new MnemonicString().GetValue();
             string returnedStudentName = randomStudentName;
             string expectedStudentName = returnedStudentName;
@@ -53,19 +82,11 @@ namespace BlazorConcepts.Tests.Unit.Components.NameComponents
 
             // when
             this.renderedNameComponent = RenderComponent<NameComponent>();
+            this.renderedNameComponent.Instance.Button.Click();
 
             // then
             this.renderedNameComponent.Instance.StudentName
                 .Should().BeEquivalentTo(expectedStudentName);
-
-            this.renderedNameComponent.Instance.TextBox.GetValue()
-                .Should().BeEquivalentTo(expectedStudentName);
-
-            this.renderedNameComponent.Instance.State
-                .Should().BeEquivalentTo(expectedState);
-
-            this.renderedNameComponent.Instance.Exception
-                .Should().BeNull();
 
             this.studentServiceMock.Verify(service =>
                 service.GetStudentName(),

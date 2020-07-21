@@ -1,3 +1,7 @@
 ﻿@using BlazorConcepts.Views.Bases
 
-<TextBoxBase @ref="TextBox" Value="@StudentName"></TextBoxBase>
+<TextBoxBase @ref="TextBox" />
+
+<ButtonBase @ref="Button" 
+            Text="Get Student Name"
+            CallbackFunction="ButtonClicked"/>

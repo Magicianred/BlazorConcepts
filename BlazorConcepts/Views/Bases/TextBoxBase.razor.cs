@@ -12,5 +12,7 @@ namespace BlazorConcepts.Views.Bases
         public string Value { get; set; }
 
         public string GetValue() => this.Value;
+
+        public string SetValue(string value) => this.Value = value;
     }
 }
