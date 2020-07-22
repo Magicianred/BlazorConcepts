@@ -7,6 +7,6 @@ namespace BlazorConcepts.Services
 {
     public class StudentService : IStudentService
     {
-        public string GetStudentName() => "Jackie Lee";
+        public string GetStudentName() => "Charmila";
     }
 }

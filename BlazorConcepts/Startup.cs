@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using BlazorConcepts.Data;
 using BlazorConcepts.Services;
+using RESTFulSense.Clients;
 
 namespace BlazorConcepts
 {
@@ -29,11 +29,15 @@ namespace BlazorConcepts
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
             services.AddScoped<IStudentService, StudentService>();
             services.AddRazorPages(options =>
             {
                 options.RootDirectory = "/Views/Pages";
+            });
+
+            services.AddHttpClient<IRESTFulApiFactoryClient, RESTFulApiFactoryClient>(client =>
+            {
+                // TODO: go in detail about instantiation of http client
             });
         }
 

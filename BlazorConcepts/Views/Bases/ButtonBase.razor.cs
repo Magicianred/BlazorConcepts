@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace BlazorConcepts.Views.Bases
 {
-    public partial class ButtonBase : IButtonBase
+    public partial class ButtonBase
     {
         [Parameter]
         public string Text { get; set; }
@@ -12,10 +12,5 @@ namespace BlazorConcepts.Views.Bases
         public Action CallbackFunction { get; set; }
 
         public void Click() => CallbackFunction.Invoke();
-    }
-
-    public interface IButtonBase
-    {
-        public void Click();
     }
 }

@@ -15,7 +15,7 @@ namespace BlazorConcepts.Views.Components
         public NameComponentException Exception { get; set; }
         public string StudentName { get; set; }
         public TextBoxBase TextBox { get; set; }
-        public IButtonBase Button { get; set; }
+        public ButtonBase Button { get; set; }
 
         public NameComponent()
         {
@@ -29,11 +29,8 @@ namespace BlazorConcepts.Views.Components
 
         public void ButtonClicked()
         {
-            string studentName =
+            this.StudentName =
                 this.StudentService.GetStudentName();
-
-            this.TextBox.SetValue(studentName);
-            StateHasChanged();
         }
     }
 }

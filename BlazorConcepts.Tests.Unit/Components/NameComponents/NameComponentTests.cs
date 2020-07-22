@@ -85,7 +85,7 @@ namespace BlazorConcepts.Tests.Unit.Components.NameComponents
             this.renderedNameComponent.Instance.Button.Click();
 
             // then
-            this.renderedNameComponent.Instance.StudentName
+            this.renderedNameComponent.Instance.TextBox.Value
                 .Should().BeEquivalentTo(expectedStudentName);
 
             this.studentServiceMock.Verify(service =>
