@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BlazorConcepts.Models.Students;
 
 namespace BlazorConcepts.Services
 {
     public interface IStudentService
     {
-        string GetStudentName();
+        ValueTask<Student> RegisterStudentAsync(Student student);
     }
 }

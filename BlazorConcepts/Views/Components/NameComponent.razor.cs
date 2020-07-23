@@ -29,8 +29,7 @@ namespace BlazorConcepts.Views.Components
 
         public void ButtonClicked()
         {
-            this.StudentName =
-                this.StudentService.GetStudentName();
+            
         }
     }
 }

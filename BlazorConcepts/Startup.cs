@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BlazorConcepts.Services;
 using RESTFulSense.Clients;
+using BlazorConcepts.Models.Configurations;
 
 namespace BlazorConcepts
 {
@@ -30,6 +31,7 @@ namespace BlazorConcepts
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<IStudentService, StudentService>();
+
             services.AddRazorPages(options =>
             {
                 options.RootDirectory = "/Views/Pages";
@@ -37,7 +39,9 @@ namespace BlazorConcepts
 
             services.AddHttpClient<IRESTFulApiFactoryClient, RESTFulApiFactoryClient>(client =>
             {
-                // TODO: go in detail about instantiation of http client
+                LocalConfigurations localConfigurations = Configuration.Get<LocalConfigurations>();
+                string apiUrl = localConfigurations.ApiConfigurations.Url;
+                client.BaseAddress = new Uri(apiUrl);
             });
         }
 

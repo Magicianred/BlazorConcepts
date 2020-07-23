@@ -20,16 +20,7 @@ namespace BlazorConcepts.Views.Components
 
         protected override void OnInitialized()
         {
-            try
-            {
-                this.StudentName = this.StudentService.GetStudentName();
-                this.State = ComponentState.Content;
-            }
-            catch (Exception exception)
-            {
-                this.Exception = new SearchComponentException(exception);
-                this.State = ComponentState.Error;
-            }
+           
         }
     }
 }
